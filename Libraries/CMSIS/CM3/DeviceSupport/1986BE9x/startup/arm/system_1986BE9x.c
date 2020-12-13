@@ -126,6 +126,7 @@ void SystemCoreClockUpdate (void)
   */
 void SystemInit (void)
 {
+#if 0
 	/* Reset the RST clock configuration to the default reset state */
 
   /* Reset all clock but RST_CLK & BKP_CLC bits */
@@ -152,7 +153,7 @@ void SystemInit (void)
 
   /* Reset RTC_CLOCK bits */
   RST_CLK->RTC_CLOCK   &= (uint32_t)0x00000000;
-
+#endif
   SystemCoreClockUpdate();
 }
 

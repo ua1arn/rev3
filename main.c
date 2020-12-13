@@ -90,6 +90,27 @@ void BlinkLED1(uint32_t num, uint32_t del,uint32_t LED_Num)
   }
 }
 
+void Uart1PinCfg(void)
+{
+	/* Fill PortInit structure*/
+    PortInit.PORT_PULL_UP = PORT_PULL_UP_OFF;
+    PortInit.PORT_PULL_DOWN = PORT_PULL_DOWN_OFF;
+    PortInit.PORT_PD_SHM = PORT_PD_SHM_OFF;
+    PortInit.PORT_PD = PORT_PD_DRIVER;
+    PortInit.PORT_GFEN = PORT_GFEN_OFF;
+    PortInit.PORT_FUNC = PORT_FUNC_OVERRID;
+    PortInit.PORT_SPEED = PORT_SPEED_MAXFAST;
+    PortInit.PORT_MODE = PORT_MODE_DIGITAL;
+    /* Configure PORTA pins 6 (UART1_RX) as input */
+    PortInit.PORT_OE = PORT_OE_IN;
+    PortInit.PORT_Pin = PORT_Pin_6;
+    PORT_Init(PORTA, &PortInit);
+    /* Configure PORTA pins 7 (UART1_TX) as output */
+    PortInit.PORT_OE = PORT_OE_OUT;
+    PortInit.PORT_Pin = PORT_Pin_7;
+    PORT_Init(PORTA, &PortInit);	
+}
+
 void Uart2PinCfg(void)
 {
 	/* Fill PortInit structure*/
@@ -193,6 +214,28 @@ void ButtonPinGfg (void)
 	PORT_Init(PORTE, &PortInit);
 }
 	
+void Uart1Setup(void)
+{
+	/* Select HSI/2 as CPU_CLK source*/
+ //   RST_CLK_CPU_PLLconfig (RST_CLK_CPU_PLLsrcHSIdiv2,0);
+    /* Enables the CPU_CLK clock on UART2 */
+	RST_CLK_PCLKcmd(RST_CLK_PCLK_UART1, ENABLE);
+    /* Set the HCLK division factor = 1 for UART2*/
+	UART_BRGInit(UART1, UART_HCLKdiv1);
+
+    UART_InitStructure.UART_BaudRate                = 12000;
+    UART_InitStructure.UART_WordLength              = UART_WordLength8b;
+    UART_InitStructure.UART_StopBits                = UART_StopBits1;
+    UART_InitStructure.UART_Parity                  = UART_Parity_No;
+    UART_InitStructure.UART_FIFOMode                = UART_FIFO_OFF;
+    UART_InitStructure.UART_HardwareFlowControl     = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
+
+	/* Configure UART2 parameters*/
+	UART_Init (UART1,&UART_InitStructure);
+    /* Enables UART2 peripheral */
+    UART_Cmd(UART1,ENABLE);
+}
+	
 void Uart2Setup(void)
 {
 	/* Select HSI/2 as CPU_CLK source*/
@@ -202,7 +245,7 @@ void Uart2Setup(void)
     /* Set the HCLK division factor = 1 for UART2*/
 	UART_BRGInit(UART2, UART_HCLKdiv1);
 
-    UART_InitStructure.UART_BaudRate                = 12000; //9600;
+    UART_InitStructure.UART_BaudRate                = 12000;
     UART_InitStructure.UART_WordLength              = UART_WordLength8b;
     UART_InitStructure.UART_StopBits                = UART_StopBits1;
     UART_InitStructure.UART_Parity                  = UART_Parity_No;
@@ -282,14 +325,14 @@ int UartTest (void)
 {
 uint8_t DataByte;
 
-	Uart2PinCfg();
-	Uart2Setup();
+	Uart1PinCfg();
+	Uart1Setup();
   	while(1)
 	{
-			while (UART_GetFlagStatus (UART2, UART_FLAG_TXFE)!= SET)
+			while (UART_GetFlagStatus (UART1, UART_FLAG_TXFE)!= SET)
 				;
         /* Send Data */
-        UART_SendData (UART2,0xF0);
+        UART_SendData (UART1,0xF0);
 		}
 while(1)
 	{
@@ -450,7 +493,7 @@ char s1;
 //    while (RST_CLK_HSEstatus() != SUCCESS);
 
 	/* Enables the clock on PORTA */
-	//RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTA, ENABLE);
+	RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTA, ENABLE);
 	/* Enables the clock on PORTB */
 	//RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTB, ENABLE);	
     /* Enables the clock on PORTC */
@@ -460,7 +503,7 @@ char s1;
 	/* Enables the clock on PORTE */
 	//RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTE, ENABLE);
 	/* Enables the HSI clock on PORTF */
-    RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTF, ENABLE);
+   // RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTF, ENABLE);
 	/* Enables the HSI clock on ExtBus */
     //RST_CLK_PCLKcmd(RST_CLK_PCLK_EXT_BUS_CNTRL, ENABLE);
 
