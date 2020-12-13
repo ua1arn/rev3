@@ -196,13 +196,13 @@ void ButtonPinGfg (void)
 void Uart2Setup(void)
 {
 	/* Select HSI/2 as CPU_CLK source*/
-    RST_CLK_CPU_PLLconfig (RST_CLK_CPU_PLLsrcHSIdiv2,0);
+ //   RST_CLK_CPU_PLLconfig (RST_CLK_CPU_PLLsrcHSIdiv2,0);
     /* Enables the CPU_CLK clock on UART2 */
 	RST_CLK_PCLKcmd(RST_CLK_PCLK_UART2, ENABLE);
     /* Set the HCLK division factor = 1 for UART2*/
 	UART_BRGInit(UART2, UART_HCLKdiv1);
 
-    UART_InitStructure.UART_BaudRate                = 9600;
+    UART_InitStructure.UART_BaudRate                = 12000; //9600;
     UART_InitStructure.UART_WordLength              = UART_WordLength8b;
     UART_InitStructure.UART_StopBits                = UART_StopBits1;
     UART_InitStructure.UART_Parity                  = UART_Parity_No;
@@ -446,26 +446,23 @@ int main (void)
 {
 char s1;
 
-	RST_CLK_LSEconfig(RST_CLK_LSE_ON);
-    while (RST_CLK_LSEstatus() != SUCCESS);
-    
-	RST_CLK_HSEconfig(RST_CLK_HSE_ON);
-    while (RST_CLK_HSEstatus() != SUCCESS);
+//	RST_CLK_HSEconfig(RST_CLK_HSE_ON);
+//    while (RST_CLK_HSEstatus() != SUCCESS);
 
 	/* Enables the clock on PORTA */
-	RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTA, ENABLE);
+	//RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTA, ENABLE);
 	/* Enables the clock on PORTB */
-	RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTB, ENABLE);	
+	//RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTB, ENABLE);	
     /* Enables the clock on PORTC */
-	RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTC, ENABLE);
+	//RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTC, ENABLE);
 	/* Enables the clock on PORTD */
-	RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTD, ENABLE);
+	//RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTD, ENABLE);
 	/* Enables the clock on PORTE */
-	RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTE, ENABLE);
+	//RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTE, ENABLE);
 	/* Enables the HSI clock on PORTF */
     RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTF, ENABLE);
 	/* Enables the HSI clock on ExtBus */
-    RST_CLK_PCLKcmd(RST_CLK_PCLK_EXT_BUS_CNTRL, ENABLE);
+    //RST_CLK_PCLKcmd(RST_CLK_PCLK_EXT_BUS_CNTRL, ENABLE);
 
 {
 				UartFlag = 1;
