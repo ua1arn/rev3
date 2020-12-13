@@ -1,0 +1,92 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.33.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Genadi Zawidowski, n/a, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.33.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.33.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      Segger\JL2CM3.dll V2.99.38.0
+Dialog DLL:      TCM.DLL V1.48.0.0
+ 
+<h2>Project:</h2>
+C:\niipp\Keil-pack\Demo_PRJ\EV1986BE92_Rev3_Test\EV1986BE2Test.uvprojx
+Project File Date:  12/07/2020
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling main.c...
+main.c(22): error:  #5: cannot open source input file "1986be9x_config.h": No such file or directory
+  #include "1986be9x_config.h"
+main.c: 0 warnings, 1 error
+compiling system_1986BE9x.c...
+Libraries\CMSIS\CM3\DeviceSupport\1986BE9x\startup\arm\system_1986BE9x.c(37): error:  #5: cannot open source input file "1986BE9x_config.h": No such file or directory
+  #include "1986BE9x_config.h"
+Libraries\CMSIS\CM3\DeviceSupport\1986BE9x\startup\arm\system_1986BE9x.c: 0 warnings, 1 error
+compiling 1986be9x_uart.c...
+Libraries\1986BE9x_StdPeriph_Driver\src\1986be9x_uart.c(26): error:  #5: cannot open source input file "1986BE9x_config.h": No such file or directory
+  #include "1986BE9x_config.h"
+Libraries\1986BE9x_StdPeriph_Driver\src\1986be9x_uart.c: 0 warnings, 1 error
+compiling 1986be9x_dma.c...
+Libraries\1986BE9x_StdPeriph_Driver\src\1986be9x_dma.c(25): error:  #5: cannot open source input file "1986BE9x_config.h": No such file or directory
+  #include "1986BE9x_config.h"
+Libraries\1986BE9x_StdPeriph_Driver\src\1986be9x_dma.c: 0 warnings, 1 error
+compiling 1986be9x_eeprom.c...
+Libraries\1986BE9x_StdPeriph_Driver\src\1986be9x_eeprom.c(25): error:  #5: cannot open source input file "1986BE9x_config.h": No such file or directory
+  #include "1986BE9x_config.h"
+Libraries\1986BE9x_StdPeriph_Driver\src\1986be9x_eeprom.c: 0 warnings, 1 error
+compiling 1986be9x_port.c...
+.\Libraries\1986BE9x_StdPeriph_Driver\inc\1986BE9x_port.h(31): error:  #5: cannot open source input file "1986BE9x_config.h": No such file or directory
+  #include "1986BE9x_config.h"
+Libraries\1986BE9x_StdPeriph_Driver\src\1986be9x_port.c: 0 warnings, 1 error
+compiling 1986be9x_rst_clk.c...
+Libraries\1986BE9x_StdPeriph_Driver\src\1986be9x_rst_clk.c(25): error:  #5: cannot open source input file "1986BE9x_config.h": No such file or directory
+  #include "1986BE9x_config.h"
+Libraries\1986BE9x_StdPeriph_Driver\src\1986be9x_rst_clk.c: 0 warnings, 1 error
+compiling 1986be9x_it.c...
+1986be9x_it.c(3): error:  #5: cannot open source input file "mlt_lcd.h": No such file or directory
+  #include "mlt_lcd.h"
+compiling mlt_lcd.c...
+.\Libraries\1986BE9x_StdPeriph_Driver\inc\1986BE9x_port.h(31): error:  #5: cannot open source input file "1986BE9x_config.h": No such file or directory
+  #include "1986BE9x_config.h"
+mlt\mlt_lcd.c: 0 warnings, 1 error
+".\EV1986BE2Test.axf" - 9 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.MDR1986BExx.1.5.3.pack
+                Keil.MDR1986BExx.1.5.3
+                Milandr MDR1986BExx Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  C:\Users\gena\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  C:\Users\gena\AppData\Local\Arm\Packs\Keil\MDR1986BExx\1.5.3\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+Target not created.
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>
