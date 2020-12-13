@@ -3,7 +3,8 @@
 *.rar
 *.7z
 product.h
-boards/atmega644_ctlstyle_v1.h
+output/
+listing/
 .settings/language.settings.xml
 *.prefs
 .settings/*.*
@@ -21,4 +22,6 @@ boards/atmega644_ctlstyle_v1.h
 *.opt
 *.d
 *.o
-
+*.crf
+*.map
+*.uvguix.*
